@@ -1,0 +1,8 @@
+#@include= ../config/green.jpf
+#@include= ../config/greentrie.jpf
+@include= ../config/nocache.jpf
+
+target=CLITestDriver
+symbolic.method= CLITestDriver.testSimpleShort(sym)
+symbolic.min_int = 0
+symbolic.max_int = 255

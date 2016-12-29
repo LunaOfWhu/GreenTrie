@@ -29,7 +29,6 @@ import cn.edu.whu.sklse.greentrie.logic.LogicalRelationUtil;
 public class Reducer {
 
 	public Expression reduce(Expression exp) {
-		//System.out.println("reduce exp list: "+opList);
 		if(exp.equals(Operation.TRUE)||exp.equals(Operation.FALSE)){
 			return exp;
 		}
@@ -49,7 +48,6 @@ public class Reducer {
 
 	public List<Operation> reduce(List<Operation> opList) {
 		Collections.sort(opList);
-		//System.out.println("reduce exp list: "+opList);
 		Map<Expression, Interval> intervalMap = new TreeMap<Expression, Interval>();
 		List<Operation> others = new ArrayList<Operation>();
 		for (Operation op : opList) {
@@ -121,13 +119,14 @@ public class Reducer {
 	}
 
 	private Operation buildOperation(Expression op, Number num, Operator operator) {
-		Constant c1=null;
+		
+		Expression left=null;
 		if(NumberUtil.containtReal(op)){
-			c1=(num.doubleValue() == 0.0)?Operation.REAL_ZERO:new RealConstant(num.doubleValue());
-			return new Operation(operator, new Operation(Operator.ADD, op, c1), Operation.REAL_ZERO);
+			left=(num.doubleValue() == 0.0)?op:new Operation(Operator.ADD, op, new RealConstant(num.doubleValue()));
+			return new Operation(operator, left, Operation.REAL_ZERO);
 		}else{
-			c1=(num.intValue() == 0)?Operation.ZERO:new IntConstant(num.intValue());
-			return new Operation(operator, new Operation(Operator.ADD, op, c1), Operation.ZERO);
+			left=(num.intValue() == 0)?op:new Operation(Operator.ADD, op, new IntConstant(num.intValue()));
+			return new Operation(operator, left, Operation.ZERO);
 		}
 	}
 
@@ -204,7 +203,8 @@ public class Reducer {
 			double dif1 = NumberUtil.compare(this.max, this.min);
 			if (dif1 < 0) {
 				return false;
-			} else if (dif1 == 0 && (this.maxIsOpen || this.minIsOpen)) {
+			} 
+			if (dif1 == 0 && (this.maxIsOpen || this.minIsOpen)) {
 				return false;
 			}
 			return true;
