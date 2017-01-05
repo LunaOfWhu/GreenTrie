@@ -1,0 +1,22 @@
+classpath=bin
+sourcepath=src
+symbolic.lazy=true
+symbolic.lazy.subtypes=true 
+
+vm.peer_packages=gov.nasa.jpf.symbc,gov.nasa.jpf.jvm
+vm.storage.class=nil
+search.multiple_errors=true
+
+symbolic.green = true
+green.taskmanager = za.ac.sun.cs.green.taskmanager.ParallelTaskManager
+
+green.store = cn.edu.whu.sklse.greentrie.store.TrieStore
+
+green.services = sat
+#green.service.sat = (slice (canonize coral))
+green.service.sat = (slice(canonize coral))
+green.service.sat.slice = za.ac.sun.cs.green.service.slicer.SATSlicerService
+green.service.sat.canonize = cn.edu.whu.sklse.greentrie.canolize.SATCanonizerService
+green.service.sat.coral = cn.edu.whu.sklse.greentrie.coral.SATCoralService
+
+listener = .symbc.GreenListener

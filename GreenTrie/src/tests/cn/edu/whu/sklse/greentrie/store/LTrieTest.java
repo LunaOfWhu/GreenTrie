@@ -135,7 +135,7 @@ public class LTrieTest {
 		Operation c1= new Operation(Operation.Operator.GE, v0, new IntConstant(0));//v0>=0
 		List<Vertex> s = ltrie.getIS(c1);
 		for(Vertex v:s){
-			System.out.println(v.getProperty(LTrie.PROP_EXP));
+			//System.out.println(v.getProperty(LTrie.PROP_EXP));
 		}
 	}
 	
@@ -146,7 +146,7 @@ public class LTrieTest {
 		Operation c1= new Operation(Operation.Operator.GE, v0, new IntConstant(0));//v0>=0
 		List<Vertex> s = ltrie.getRIS(c1);
 		for(Vertex v:s){
-			System.out.println(v.getProperty(LTrie.PROP_EXP));
+			//System.out.println(v.getProperty(LTrie.PROP_EXP));
 		}
 	}
 	

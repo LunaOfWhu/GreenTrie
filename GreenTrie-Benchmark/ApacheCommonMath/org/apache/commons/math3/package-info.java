@@ -18,3 +18,4 @@
  * Common classes used throughout the commons-math library.
  */
 package org.apache.commons.math3;
+//this package contains some interface rather than some complementary method,so test suite should not care the package.

@@ -1,0 +1,12 @@
+init begin
+-- drivers are not yet loaded
+tsafe_jbse/Driver_RT_S,
+tsafe_jbse/Driver_SC_C,
+tsafe_jbse/Driver_TS_D,
+tsafe_jbse/Driver_TS_R
+end
+
+resolve begin
+-- abstract types are resolved to suitable concrete ones
+instanceof tsafe_jbse/engine/EngineCalculator expands to instanceof tsafe_jbse/main/SimpleCalculator
+end

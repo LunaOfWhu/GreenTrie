@@ -203,7 +203,7 @@ public class SATCanonizerTest {
 		check(o3, "(aa+bb)<(bb-aa)", "2*v+1<=0");
 	}
 
-	@Test
+	
 	public void test04() {
 		IntVariable v1 = new IntVariable("aa", 0, 99);
 		IntConstant c1 = new IntConstant(0);

@@ -1,0 +1,39 @@
+resolve begin
+-- abstract types are resolved to suitable concrete ones
+instanceof java/util/List expands to instanceof tsafe_jbse/modi/LinkedList_LICS,
+
+-- all the elements in route.fixes exist, are distinct, and have class tsafe_jbse.data.Fix
+{ROOT}/route/fixes/header(/next|/previous)+/element instanceof java/lang/Object not null,
+{ROOT}/route/fixes/header(/next|/previous)+/element instanceof java/lang/Object expands to instanceof tsafe_jbse/data/Fix,
+{ROOT}/route/fixes/header(/next|/previous)+/element instanceof java/lang/Object aliases instanceof nothing,
+
+-- follows the rep invariant for LinkedList_LICS: 
+-- (1) header exist and is fresh
+{R_ANY}/header instanceof tsafe_jbse/modi/LinkedList_LICS$Entry not null,
+{R_ANY}/header instanceof tsafe_jbse/modi/LinkedList_LICS$Entry aliases instanceof nothing,
+
+-- (2) header has no element
+{R_ANY}/header/element instanceof java/lang/Object expands to nothing,
+{R_ANY}/header/element instanceof java/lang/Object aliases instanceof nothing,
+
+-- (3) all entries must have a next and a previous
+{R_ANY}/header(/next|/previous)* instanceof tsafe_jbse/modi/LinkedList_LICS$Entry not null,
+
+-- (4) for all entries e, e.next.previous == e and e.previous.next == e (i.e., 
+-- nodes are expanded only on the left as header(.previous)+ or on the right
+-- as header(/next)+
+{R_ANY}/header(/next)+/previous instanceof tsafe_jbse/modi/LinkedList_LICS$Entry expands to nothing,
+{R_ANY}/header(/next)+/previous instanceof tsafe_jbse/modi/LinkedList_LICS$Entry aliases {$REF}/{UP}/{UP},
+{R_ANY}/header(/previous)+/next instanceof tsafe_jbse/modi/LinkedList_LICS$Entry expands to nothing,
+{R_ANY}/header(/previous)+/next instanceof tsafe_jbse/modi/LinkedList_LICS$Entry aliases {$REF}/{UP}/{UP},
+
+-- (5) the rightmost entry can be expanded to the leftmost one and vice versa;
+-- this includes the degenerate case header.next == header.prev == header (empty list).
+{R_ANY}/header(/next)* instanceof tsafe_jbse/modi/LinkedList_LICS$Entry aliases max {$R_ANY}/header(/previous)*,
+{R_ANY}/header(/previous)* instanceof tsafe_jbse/modi/LinkedList_LICS$Entry aliases max {$R_ANY}/header(/next)*,
+
+-- (6) all the entries in a linked list refer their owner (ghost field)
+{R_ANY}/header(/next|/previous)*/_owner instanceof tsafe_jbse/modi/LinkedList_LICS not null,
+{R_ANY}/header(/next|/previous)*/_owner instanceof tsafe_jbse/modi/LinkedList_LICS expands to nothing,
+{R_ANY}/header(/next|/previous)*/_owner instanceof tsafe_jbse/modi/LinkedList_LICS aliases {$R_ANY}
+end

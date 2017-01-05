@@ -23,54 +23,16 @@ import gov.nasa.jpf.Config;
 import gov.nasa.jpf.JPF;
 import gov.nasa.jpf.PropertyListenerAdapter;
 import gov.nasa.jpf.vm.ChoiceGenerator;
-import gov.nasa.jpf.vm.ClassInfo;
 import gov.nasa.jpf.vm.Instruction;
-import gov.nasa.jpf.vm.LocalVarInfo;
 import gov.nasa.jpf.vm.MethodInfo;
 import gov.nasa.jpf.vm.StackFrame;
 import gov.nasa.jpf.vm.ThreadInfo;
-import gov.nasa.jpf.vm.Types;
 import gov.nasa.jpf.vm.VM;
 
-import gov.nasa.jpf.jvm.bytecode.ARETURN;
-import gov.nasa.jpf.jvm.bytecode.DRETURN;
-import gov.nasa.jpf.jvm.bytecode.FRETURN;
-import gov.nasa.jpf.jvm.bytecode.IRETURN;
 import gov.nasa.jpf.jvm.bytecode.JVMInvokeInstruction;
-import gov.nasa.jpf.jvm.bytecode.LRETURN;
-import gov.nasa.jpf.jvm.bytecode.JVMReturnInstruction;
-import gov.nasa.jpf.report.ConsolePublisher;
-import gov.nasa.jpf.report.Publisher;
 import gov.nasa.jpf.report.PublisherExtension;
-import gov.nasa.jpf.search.Search;
 import gov.nasa.jpf.symbc.bytecode.BytecodeUtils;
-import gov.nasa.jpf.symbc.bytecode.INVOKESTATIC;
-import gov.nasa.jpf.symbc.concolic.PCAnalyzer;
-
-
-import gov.nasa.jpf.symbc.numeric.Comparator;
-import gov.nasa.jpf.symbc.numeric.Expression;
-import gov.nasa.jpf.symbc.numeric.IntegerConstant;
-import gov.nasa.jpf.symbc.numeric.IntegerExpression;
 import gov.nasa.jpf.symbc.numeric.PCChoiceGenerator;
-import gov.nasa.jpf.symbc.numeric.PathCondition;
-import gov.nasa.jpf.symbc.numeric.RealConstant;
-import gov.nasa.jpf.symbc.numeric.RealExpression;
-import gov.nasa.jpf.symbc.numeric.SymbolicInteger;
-import gov.nasa.jpf.symbc.numeric.SymbolicReal;
-
-import gov.nasa.jpf.symbc.numeric.SymbolicConstraintsGeneral;
-//import gov.nasa.jpf.symbc.numeric.SymbolicInteger;
-
-import gov.nasa.jpf.util.Pair;
-
-
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.StringTokenizer;
-import java.util.Vector;
 
 
 
@@ -111,7 +73,7 @@ public class DebugListener extends PropertyListenerAdapter implements PublisherE
 				System.out.println(insn.getInstructionIndex()+":"+insn);
 				if (insn instanceof JVMInvokeInstruction) {
 					//System.out.println(((JVMInvokeInstruction) insn).getInvokedMethodName());
-					//TODO 判断是否是插装语句
+					//TODO 鍒ゆ柇鏄惁鏄彃瑁呰鍙�
 //					PCChoiceGenerator cg = getPCChoiceGenrator(vm);
 //					System.out.println("path condition:"+cg.getCurrentPC());
 //					vm.getSearch().setIgnoredState(true);

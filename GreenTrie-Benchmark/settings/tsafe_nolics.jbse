@@ -1,0 +1,4 @@
+resolve begin
+-- abstract types are resolved to suitable concrete ones
+instanceof java/util/List expands to instanceof tsafe_jbse/modi/LinkedList_noLICS
+end

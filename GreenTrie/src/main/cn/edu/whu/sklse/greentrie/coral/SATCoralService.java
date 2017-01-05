@@ -1,11 +1,18 @@
 package cn.edu.whu.sklse.greentrie.coral;
 
-import gov.nasa.jpf.JPF;
-import gov.nasa.jpf.vm.VM;
+
 
 import java.util.ArrayList;
 import java.util.Properties;
 
+import coral.PC;
+import coral.solvers.Env;
+import coral.solvers.Result;
+import coral.solvers.Solver;
+import coral.solvers.SolverKind;
+import coral.util.Config;
+import gov.nasa.jpf.JPF;
+import gov.nasa.jpf.vm.VM;
 import symlib.SymBool;
 import symlib.SymLiteral;
 import symlib.SymNumber;
@@ -13,12 +20,6 @@ import za.ac.sun.cs.green.Green;
 import za.ac.sun.cs.green.Instance;
 import za.ac.sun.cs.green.expr.Expression;
 import za.ac.sun.cs.green.service.SATService;
-import coral.PC;
-import coral.solvers.Env;
-import coral.solvers.Result;
-import coral.solvers.Solver;
-import coral.solvers.SolverKind;
-import coral.util.Config;
 
 public class SATCoralService extends SATService {
 	private SolverKind solverKind;

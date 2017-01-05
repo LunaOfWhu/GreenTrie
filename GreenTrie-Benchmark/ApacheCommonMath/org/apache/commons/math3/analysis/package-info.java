@@ -30,3 +30,4 @@
  *
  */
 package org.apache.commons.math3.analysis;
+//this package contains some interface rather than some complementary method,so test suite should not care the package.

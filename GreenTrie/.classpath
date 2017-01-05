@@ -32,7 +32,7 @@
 	<classpathentry kind="lib" path="lib/commons-math-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/choco-1_2_04.jar"/>
 	<classpathentry kind="lib" path="lib/iasolver.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jpf-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jpf-symbc"/>
+	<classpathentry kind="src" path="/jpf-core"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

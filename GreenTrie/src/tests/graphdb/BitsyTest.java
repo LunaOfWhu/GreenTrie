@@ -75,7 +75,7 @@ public class BitsyTest {
 		// graph.commit();
 		Vertex c=root;
 		while(c!=null){
-			System.out.println(c.getProperty("exp"));
+			//System.out.println(c.getProperty("exp"));
 			Iterable<Edge> nextE = c.getEdges(Direction.OUT, "next");
 			if(nextE.iterator().hasNext()){
 				c=nextE.iterator().next().getVertex(Direction.IN);

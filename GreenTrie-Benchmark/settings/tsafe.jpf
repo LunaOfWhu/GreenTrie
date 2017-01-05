@@ -1,0 +1,9 @@
+classpath=bin
+sourcepath=src
+symbolic.lazy=true
+symbolic.lazy.subtypes=true 
+vm.peer_packages=gov.nasa.jpf.symbc,gov.nasa.jpf.jvm
+symbolic.dp=coral
+vm.storage.class=nil
+search.multiple_errors=true
+symbolic.debug=true
